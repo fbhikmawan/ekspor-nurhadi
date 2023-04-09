@@ -1,127 +1,230 @@
-<p align="center">
-    <a href="http://www.bagisto.com"><img src="https://bagisto.com/wp-content/themes/bagisto/images/logo.png" alt="Total Downloads"></a>
-</p>
 
-<p align="center">
-    <a href="https://packagist.org/packages/bagisto/bagisto"><img src="https://poser.pugx.org/bagisto/bagisto/d/total.svg" alt="Total Downloads"></a>
-    <a href="https://packagist.org/packages/bagisto/bagisto"><img src="https://poser.pugx.org/bagisto/bagisto/v/stable.svg" alt="Latest Stable Version"></a>
-    <a href="https://packagist.org/packages/bagisto/bagisto"><img src="https://poser.pugx.org/bagisto/bagisto/license.svg" alt="License"></a>
-    <a href="https://github.com/bagisto/bagisto/actions"><img src="https://github.com/bagisto/bagisto/workflows/CI/badge.svg" alt="Backers on Open Collective"></a>
-    <a href="#backers"><img src="https://opencollective.com/bagisto/backers/badge.svg" alt="Backers on Open Collective"></a>
-    <a href="#sponsors"><img src="https://opencollective.com/bagisto/sponsors/badge.svg" alt="Sponsors on Open Collective"></a>
-</p>
+# Ekspor Nurhadi
 
-<p align="center">
-    <a href="https://twitter.com/intent/follow?screen_name=bagistoshop"><img src="https://img.shields.io/twitter/follow/bagistoshop?style=social"></a>
-    <a href="https://www.youtube.com/channel/UCbrfqnhyiDv-bb9QuZtonYQ"><img src="https://img.shields.io/youtube/channel/subscribers/UCbrfqnhyiDv-bb9QuZtonYQ?style=social"></a>
-</p>
+This a development repository for Ekspor Nurhadi Project<br>
+Developed by Bagisto using Laravel framework<br>
+Feel free to modify, before we go to real development repo.
 
-<p align="center">
-    ➡️ <a href="https://bagisto.com/en/">Website</a> | <a href="https://devdocs.bagisto.com/">Documentation</a> | <a href="https://webkul.com/blog/laravel-ecommerce-website/">Installation Guide</a> | <a href="https://forums.bagisto.com/">Forums</a> | <a href="https://www.facebook.com/groups/bagisto/">Community</a> ⬅️
-</p>
+------------
+<br>
 
-<p align="center" style="display: inline;">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/ar.svg" alt="Arabic" width="24" height="24">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/de.svg" alt="German" width="24" height="24">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="English" width="24" height="24">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/es.svg" alt="Spanish" width="24" height="24">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/ir.svg" alt="Persian" width="24" height="24">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/it.svg" alt="Italian" width="24" height="24">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/nl.svg" alt="Dutch" width="24" height="24">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/pl.svg" alt="Polish" width="24" height="24">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/pt.svg" alt="Portuguese" width="24" height="24">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/tr.svg" alt="Turkish" width="24" height="24">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/eg.svg" alt="Egyptian" width="24" height="24">
-    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/cn.svg" alt="Chinese" width="24" height="24">
-</p>
+## DEVELOPMENT Setup
+We suggest you are using docker container to develop this repository, provided in https://github.com/fbhikmawan/ekspor-docker<br>
 
-<a href="https://www.youtube.com/watch?v=OHbte7hdxYU">
-    <img class="flag-img" src="https://raw.githubusercontent.com/bagisto/temp-media/master/bagisto-featured.png" alt="Chinese" width="100%">
-</a>
+(-) Clone the Docker Repository
+```
+git clone git@github.com:fbhikmawan/ekspor-docker.git
+```
+(-) Enter the repository and change the branch to develop
+```
+cd ekspor-docker
+git checkout develop
+```
+(-) Modify the PORT ASSIGNMENTS in ".env" file according to your needs or if you encounter port conflict.
 
-# Introduction
+(-) Run the Docker
+```
+docker-container up
+```
+<br>
+After all the docker services are running successfully. 
 
-[Bagisto](https://www.bagisto.com/) is a hand-tailored E-Commerce framework built on some of the hottest open-source technologies such as [Laravel](https://laravel.com/) (a [PHP](https://secure.php.net/) framework) and [Vue.js](https://vuejs.org/) a progressive Javascript framework.
+(1) Clone this ekspor-nurhadi repository to folder /workspace
+```
+# /workspace
+git clone git@github.com:fbhikmawan/ekspor-nurhadi.git
+```
+(2) Rename the folder to "bagisto"
+```
+# /workspace
+mv ekspor-nurhadi bagisto
+```
+(3) Change the branch to develop
+```
+# /workspace/bagisto
+git checkout develop
+```
+(4) Copy the .env.example file to .env file. Edit as your needs
+```
+cp .env.example .env
+```
+Make sure about:
 
-Bagisto can help you cut down your time, cost, and workforce for building online stores or migrating from physical stores to the ever-demanding online world. Your business -- whether small or huge -- can benefit. And it's straightforward to set it up.
+* Application Properties
+* Database Connection
+* Database Credential
+* Database Name
 
-![enter image description here](https://raw.githubusercontent.com/bagisto/temp-media/master/stats.png)
+(5) Install all the PHP vendor dependencies
+```
+composer install
+```
+(6) Generate the Application Key
+```
+php artisan key:generate
+```
+(7) Migrate the application database structures
+```
+php artisan migrate
+```
+(8) Seeds the database with existing data
+```
+php artisan db:seed
+```
+(9) Publish the vendor 
+```
+php artisan vendor:publish
+```
+(10) Link the storage folder 
+```
+php artisan storage:link
+```
+(11) Dumping the vendor dependencies
+```
+# /workspace
+composer dump-autoload -d bagisto/
+```
+(DONE) You can access the front at `http://localhost:8001`. the admin page at `http://localhost:8001/admin` with credential username `admin@example.com` and password `admin123`
 
-# Getting Started
 
-![enter image description here](https://raw.githubusercontent.com/bagisto/temp-media/master/geting-starded.png)
+------------
+<br>
 
-**[Install Bagisto](https://webkul.com/blog/laravel-ecommerce-website/)** with or without Composer (Check **[Requirement Details](https://bagisto.com/en/download/)**)
+## DEPLOYMENT Setup
 
-Follow the **[Getting Started with Bagisto](https://www.youtube.com/watch?v=s_DhQrjK8Tw&list=PLe30vg_FG4OS3BU8rHUKQZ2mnX45xwSMc)** Tutorial
+Prepare your server:
 
-You can browse through the Free **[Live Demo](https://demo.bagisto.com/)**
+(-) Make sure your server meets the minimum requirements.
 
-# Headless Commerce
+<strong>Server configuration</strong>
+* SERVER: Apache 2 or NGINX.
+* RAM: 4GB or higher.
+* Node: 8.11.3 LTS or higher.
+* PHP: 7.4 or higher.
+* Composer: 1.6.5 or higher.
 
-The power of headless commerce now comes to Bagisto enabling you to experience seamless and easily scalable storefront performance. Backed by some of the hottest tech stacks Vue and React, Bagisto commerce can now be used to build powerful headless commerce solutions offering blazing fast speed and easy customisation powered by Vue Storefront and Next.js
+<strong>PHP Extensions</strong><br>
+Make sure the following extensions are installed and enabled. You can check using the phpinfo() page or the php -m command.
+* php-intl extension
+* php-gd extension
 
-## Vue Storefront
+(-) Clone the repository to your desired folder. Lets say on folder "`\home\username`". Then, the repository full path will be "`\home\username\ekspor-nurhadi`".
 
-![enter image description here](https://raw.githubusercontent.com/bagisto/temp-media/master/vue.png)
+Begin to deploy the app:
 
-Vue Storefront 2 integration for Bagisto: [https://github.com/bagisto/vuestorefront](https://github.com/bagisto/vuestorefront)
+(1) Change the branch to develop
+```
+git checkout develop
+```
+(2) Copy the .env.example file to .env file. Edit as your needs
+```
+cp .env.example .env
+```
+Make sure about:
 
-## Next.js Commerce
+* Application Properties
+* Database Connection
+* Database Credential
+* Database Name
 
-![enter image description here](https://raw.githubusercontent.com/bagisto/temp-media/master/next.png)
+(3) Install all the PHP vendor dependencies
+```
+composer install
+```
+(4) Generate the Application Key
+```
+php artisan key:generate
+```
+(5) Migrate the application database structures
+```
+php artisan migrate
+```
+(6) Seeds the database with existing data
+```
+php artisan db:seed
+```
+(7) Publish the vendor 
+```
+php artisan vendor:publish
+```
+(8) Link the storage folder 
+```
+php artisan storage:link
+```
+(9) Dumping the vendor dependencies
+```
+# /workspace
+composer dump-autoload -d bagisto/
+```
+(10) Update the folder permission for Laravel's logging activities. Webserver user and group depend on your webserver and your OS. To figure out what's your web server user and group use the following commands.
 
-Develop and deploy your next headless commerce storefronts with Next JS and Bagisto: [https://github.com/bagisto/nextjs-commerce](https://github.com/bagisto/nextjs-commerce)
+For NGINX use:
+```
+ps aux|grep nginx|grep -v grep
+```
+Then update the owner and permission.<br>
+The string 'www-data' below is taken from script above. 
+```
+sudo chown -R $USER:www-data storage
+sudo chown -R $USER:www-data bootstrap/cache
+```
+```
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+```
+(11) Move the repository to `/srv/` folder
+```
+mv /home/username/ekspor-nurhadi /srv/
+```
+(12) Create the nginx configuration file named "`example.com`" to the folder "`/etc/nginx/sites-available`"
+```
+server {
+    listen 80;
+    listen [::]:80;
+    server_name example.com;
+    root /srv/ekspor-nurhadi/public;
+ 
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-Content-Type-Options "nosniff";
+ 
+    index index.php;
+ 
+    charset utf-8;
+ 
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+ 
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+ 
+    error_page 404 /index.php;
+ 
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+ 
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+}
+```
 
-# Commerce For Every Needs
+(13) Create a link those config file to NGINX site-enable:
+```
+sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+```
 
-![enter image description here](https://raw.githubusercontent.com/bagisto/temp-media/master/every-need.png)
+(14) Check the overall NGINX configuration files:
+```
+sudo nginx -t
+```
+Ensure the return status is OK.
 
-With Bagisto, you can easily create use cases for various commerce needs like Marketplaces, PWA, Native Mobile Apps, Multi-Tenants systems and many more. 
-
-# Built In Extensions
-
-![enter image description here](https://raw.githubusercontent.com/bagisto/temp-media/master/extenstion.png)
-
-Make use of 100+ Bagisto pre built extensions from [Bagisto Extension Markeptlace](https://bagisto.com/en/extensions/)
-
-# Community
-
-![enter image description here](https://raw.githubusercontent.com/bagisto/temp-media/master/community.png)
-
-Get Bagisto support on Facebook Group and [Forum](https://forum.sylius.com/)
-Would like to help us build the most developer-friendly eCommerce platform? Start by reading our [Contributing Guide](https://github.com/bagisto/bagisto/blob/master/.github/CONTRIBUTING.md)!
-
-# License
-Bagisto is a truly open-source E-Commerce framework that will always be free under the [MIT License](https://github.com/bagisto/bagisto/blob/master/LICENSE).
-
-# Security Vulnerabilities
-If you think that you have found a security issue in Bagisto, please do not use the issue tracker and do not post it publicly. Instead, all security issues must be sent to [mailto:support@bagisto.com](mailto:support@bagisto.com).
-
-# Contributors
-
-This project is on [Open Collective](https://opencollective.com/bagisto), and it exists thanks to the people who contribute.
-
-<a href="https://github.com/bagisto/bagisto/graphs/contributors"><img src="https://opencollective.com/bagisto/contributors.svg?width=890&button=false"/></a>
-
-# Backers
-
-Thank you to all our backers! 🙏
-
-<a href="https://opencollective.com/bagisto#contributors" target="_blank"><img src="https://opencollective.com/bagisto/backers.svg?width=890"></a>
-
-# Sponsors
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
-
-<div>
-    <a href="https://opencollective.com/bagisto/contribute/sponsor-7372/checkout" target="_blank">
-        <img src="https://images.opencollective.com/static/images/become_sponsor.svg">
-    </a>
-</div>
-
-<kbd>
-    <a href="http://e.ventures/" target="_blank">
-        <img src="https://images.opencollective.com/e-ventures1/7d61db2/logo.png" height="75">
-    </a>
-</kbd>
+(15) Restart the NGINX service:
+```
+sudo nginx -s reload
+```
+(DONE) You can access the front at `http://example.com`. the admin page at `http://example.com/admin` with credential username `admin@example.com` and password `admin123`
